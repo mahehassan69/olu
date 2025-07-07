@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UltraFinder - Subdomain Scanner</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 UltraFinder</h1>
+        <p class="tagline">Find hidden subdomains like a pro.</p>
+
+        <form method="POST" class="search-form">
+            <input type="text" name="domain" placeholder="Enter domain (e.g. example.com)" required>
+            <button type="submit">Scan</button>
+        </form>
+
+        {{ if .Domain }}
+        <div class="results">
+            <h2>🔐 Subdomains for: <span>{{ .Domain }}</span></h2>
+            <ul>
+                {{ range .Subdomains }}
+                <li>{{ . }}</li>
+                {{ end }}
+            </ul>
+        </div>
+        {{ end }}
+    </div>
+</body>
+</html>
